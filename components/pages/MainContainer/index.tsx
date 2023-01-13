@@ -3,18 +3,18 @@ import Text from "../../Text";
 import * as S from "./style";
 import SlotMachine from "../../SlotMachine";
 const machineList = [
-  { text: "점심 맛있게 먹은 사람", value: "opt1" },
-  { text: "몸짱", value: "opt2" },
-  { text: "비오는데 우산 안 챙긴 사람", value: "opt3" },
-  { text: "멍청이", value: "opt4" },
-  { text: "월급도둑", value: "opt5" },
-  { text: "영양제 사놓고 안먹는 사람", value: "opt6" },
-  { text: "문지방에 발가락 찧은 사람", value: "opt7" },
-  { text: "배고픈사람", value: "opt8" },
-  { text: "아까 혼나서 기분 안좋은 사람", value: "opt9" },
-  { text: "최근에 헤어진 사람", value: "opt10" },
-  { text: "이틀째 속옷 안 갈아입은 사람", value: "opt11" },
-  { text: "머리 안감은 사람", value: "opt12" },
+  "점심 맛있게 먹은 사람",
+  "몸짱",
+  "비오는데 우산 안 챙긴 사람",
+  "멍청이",
+  "월급도둑",
+  "영양제 사놓고 안먹는 사람",
+  "문지방에 발가락 찧은 사람",
+  "배고픈사람",
+  "아까 혼나서 기분 안좋은 사람",
+  "최근에 헤어진 사람",
+  "이틀째 속옷 안 갈아입은 사람",
+  "머리 안감은 사람",
 ];
 const MainContainer = () => {
   return (
