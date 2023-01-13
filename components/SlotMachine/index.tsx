@@ -11,14 +11,14 @@ const SlotMachine = ({ children, machineList }: IProps) => {
   const initSlot = useCallback((firstInit = true, groups = 1, duration = 1) => {
     const doors = document.querySelectorAll(".door");
 
-    for (const door of doors) {
+    for (let i = 0; i < doors.length; i++) {
       if (firstInit) {
-        door.dataset.spinned = "0";
-      } else if (door.dataset.spinned === "1") {
+        doors[i].dataset.spinned = "0";
+      } else if (doors[i].dataset.spinned === "1") {
         return;
       }
 
-      const boxes = door.querySelector(".boxes");
+      const boxes = doors[i].querySelector(".boxes");
       const boxesClone = boxes.cloneNode(false);
       const pool = [""];
 
@@ -32,7 +32,7 @@ const SlotMachine = ({ children, machineList }: IProps) => {
         boxesClone.addEventListener(
           "transitionstart",
           function () {
-            door.dataset.spinned = "1";
+            doors[i].dataset.spinned = "1";
             this.querySelectorAll(".box").forEach((box) => {
               box.style.filter = "blur(1px)";
             });
@@ -52,20 +52,21 @@ const SlotMachine = ({ children, machineList }: IProps) => {
           { once: true }
         );
       }
-
       for (let i = pool.length - 1; i >= 0; i--) {
         const box = document.createElement("div");
         box.classList.add("box");
-        box.style.width = door.clientWidth + "px";
-        box.style.height = door.clientHeight + "px";
+        box.style.width = "50vw";
+        box.style.height = "10vh";
+        // box.style.width = doors[i].clientWidth + "px";
+        // box.style.height = doors[i].clientHeight + "px";
         box.textContent = pool[i];
         boxesClone.appendChild(box);
       }
       boxesClone.style.transitionDuration = `${duration > 0 ? duration : 1}s`;
       boxesClone.style.transform = `translateY(-${
-        door.clientHeight * (pool.length - 1)
+        doors[i].clientHeight * (pool.length - 1)
       }px)`;
-      door.replaceChild(boxesClone, boxes);
+      doors[i].replaceChild(boxesClone, boxes);
     }
   }, []);
 
@@ -82,8 +83,8 @@ const SlotMachine = ({ children, machineList }: IProps) => {
     initSlot(false, 1, 2);
     const doors = document.querySelectorAll(".door");
 
-    for (const door of doors) {
-      const boxes = door.querySelector(".boxes");
+    for (let i = 0; i < doors.length; i++) {
+      const boxes = doors[i].querySelector(".boxes");
       const duration = parseInt(boxes.style.transitionDuration);
       boxes.style.transform = "translateY(0)";
       await new Promise((resolve) => setTimeout(resolve, duration * 100));
