@@ -9,7 +9,7 @@ interface IProps {
 
 const SlotMachine = ({ children, machineList }: IProps) => {
   const initSlot = useCallback((firstInit = true, groups = 1, duration = 1) => {
-    const doors = document.querySelectorAll(".door");
+    const doors: any = document.querySelectorAll(".door");
 
     for (let i = 0; i < doors.length; i++) {
       if (firstInit) {
@@ -84,7 +84,7 @@ const SlotMachine = ({ children, machineList }: IProps) => {
     const doors = document.querySelectorAll(".door");
 
     for (let i = 0; i < doors.length; i++) {
-      const boxes = doors[i].querySelector(".boxes");
+      const boxes: any = doors[i].querySelector(".boxes");
       const duration = parseInt(boxes.style.transitionDuration);
       boxes.style.transform = "translateY(0)";
       await new Promise((resolve) => setTimeout(resolve, duration * 100));
